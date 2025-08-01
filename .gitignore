@@ -1,0 +1,43 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+*.env
+
+# VSCode and PyCharm settings
+.vscode/
+.idea/
+
+# Mac OS files
+.DS_Store
+
+# Local asset output (e.g., audio/image generation)
+assets/
+*.wav
+*.png
+*.jpg
+*.jpeg
+
+# Logs and cache
+*.log
+.cache/
+*.tmp
+tmp/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+
+# Optional: ignore model folders if checked out locally
+models/
