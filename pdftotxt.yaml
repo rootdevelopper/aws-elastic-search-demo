@@ -11,7 +11,7 @@ Resources:
       Description: ''
       MemorySize: 512
       Timeout: 900
-      Role: 'arn:aws:iam::061051230398:role/service-role/codebuild-gl-elastic-search-serverles-service-role'
+      Role: 'arn:aws:iam::061051230398:role/gl-lambda-execution-role'
       Environment:
         Variables:
           TARGET_BUCKET: gl-inter-store
