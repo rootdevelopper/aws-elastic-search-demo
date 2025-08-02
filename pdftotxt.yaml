@@ -11,9 +11,9 @@ Resources:
       Description: ''
       MemorySize: 512
       Timeout: 900
-      Role: 'arn:aws:iam::844028273225:role/lambda_s3'
+      Role: 'arn:aws:iam::061051230398:role/service-role/codebuild-gl-elastic-search-serverles-service-role'
       Environment:
         Variables:
-          TARGET_BUCKET: gl-inter-store
+          TARGET_BUCKET: gl-open-search-project-artifacts
       Layers:
         - 'arn:aws:lambda:ap-northeast-1:844028273225:layer:tika:1'
