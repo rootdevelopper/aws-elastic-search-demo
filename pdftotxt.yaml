@@ -14,6 +14,6 @@ Resources:
       Role: 'arn:aws:iam::061051230398:role/gl-lambda-execution-role'
       Environment:
         Variables:
-          TARGET_BUCKET: gl-inter-store
+          TARGET_BUCKET: gl-rootdevelopper-inter-store
       Layers:
         - 'arn:aws:lambda:us-east-1:061051230398:layer:tika:1'
