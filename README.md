@@ -3,7 +3,7 @@
 This project is part of a school assignment to demonstrate a complete AWS serverless pipeline using multiple AWS services. The solution includes:
 
 - **Three AWS Lambda functions**:
-  - One function uploads a PDF file to S3.
+  - One function uploads a PDF file to S3. <---- current project
   - Another function indexes the uploaded file into OpenSearch.
   - A third function reads from OpenSearch and returns the results to the user.
 - **S3** for storing uploaded files.
@@ -32,14 +32,26 @@ This project is part of a school assignment to demonstrate a complete AWS server
 ```
 .
 ├── aws_auth.zip
-├── PDFtoTXT.zip
+├── buildspec.yml
+├── lambda_function.py
+├── pdftotxt.yaml
 ├── pypdf.zip
 ├── README.md
-├── Search_Engine_Deployment-v1.pdf
-├── Search_Function.zip
-├── Search_Gateway.zip
-├── testfiles.zip
-└── Upload_to_search.zip
+└── testfiles
+    ├── Astronomy.pdf
+    ├── Biology.pdf
+    ├── C.pdf
+    ├── Communication.pdf
+    ├── Digitalmarketing.pdf
+    ├── EC2.pdf
+    ├── Games.pdf
+    ├── kerberos.pdf
+    ├── Kernelprogramming.pdf
+    ├── Moviehistory.pdf
+    ├── MusicTheory.pdf
+    ├── s3.pdf
+    ├── SocialMedia.pdf
+    └── sockets.pdf
 ```
 ---
 
@@ -88,4 +100,51 @@ Interact with OpenSearch
 
 Deploy CloudFormation stacks
 
+```
+-------------------------------------------------
+
+Notes:
+
+In aws you need to create a layer using the provided file `pypdf.zip`. The name of the layer should match to whatever you define in the `pdftotxt.yml` file :
+```
+      Layers:
+        - 'arn:aws:lambda:us-east-1:061051230398:layer:tika:1'
+```
+Update the target bucket to your bucket name:
+
+```
+          TARGET_BUCKET: gl-rootdevelopper-inter-store
+```
+and create a bucket to store your build artifacts and update this bucket name:
+
+```
+gl-open-search-project-artifacts
+```
+
+Make sure to define a role with enough permissions to access the buckets:
+
+```
+      Role: 'arn:aws:iam::061051230398:role/gl-lambda-execution-role'
+```
+
+In my case I used the AWS managed policies
+```
+AmazonS3FullAccess
+AWSLambdaBasicExecutionRole
+```
+and updated the trust policy to:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "lambda.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
 ```
